@@ -12,19 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2022_02_18_221151) do
 
-  create_table "album", force: :cascade do |t|
+  create_table "albums", force: :cascade do |t|
     t.string "name"
     t.integer "artist_id"
     t.integer "album_id"
   end
 
-  create_table "artist", force: :cascade do |t|
+  create_table "artists", force: :cascade do |t|
     t.string "name"
     t.integer "genre_id"
     t.integer "album_id"
   end
 
-  create_table "genre", force: :cascade do |t|
+  create_table "genres", force: :cascade do |t|
     t.string "name"
     t.integer "artist_id"
     t.integer "album_id"
