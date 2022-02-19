@@ -23,7 +23,11 @@ gem "sqlite3", "~> 1.4"
 # Require all files in a folder
 # https://github.com/jarmo/require_all
 gem "require_all"
+
+# MINE
 gem "httparty"
+gem "discogs-wrapper"
+gem "rspotify"
 
 # These gems will only be used when we are running the application locally
 group :development do
