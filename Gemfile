@@ -29,7 +29,7 @@ gem "httparty"
 gem "discogs-wrapper"
 gem "rspotify"
 gem 'prettyprint'
-
+gem 'sinatra-cross_origin'
 # These gems will only be used when we are running the application locally
 group :development do
   # Used to generate seed data

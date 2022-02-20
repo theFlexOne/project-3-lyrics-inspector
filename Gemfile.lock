@@ -119,6 +119,7 @@ GEM
     sinatra-activerecord (2.0.23)
       activerecord (>= 4.1)
       sinatra (>= 1.0)
+    sinatra-cors (1.2.0)
     sqlite3 (1.4.2)
     tilt (2.0.10)
     tzinfo (2.0.4)
@@ -148,6 +149,7 @@ DEPENDENCIES
   rspotify
   sinatra (~> 2.1)
   sinatra-activerecord
+  sinatra-cors (~> 1.2)
   sqlite3 (~> 1.4)
 
 BUNDLED WITH

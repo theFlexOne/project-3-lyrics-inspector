@@ -1,8 +1,5 @@
 require "rspotify"
 
-# AUTH_IDS = YAML.load_file("keys.yml")
-# RSpotify.authenticate AUTH_IDS[:spotify_client_id], AUTH_IDS[:spotify_client_secret]
-
 class SpotifyController
   include RSpotify
 
