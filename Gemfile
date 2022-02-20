@@ -28,6 +28,7 @@ gem "require_all"
 gem "httparty"
 gem "discogs-wrapper"
 gem "rspotify"
+gem 'prettyprint'
 
 # These gems will only be used when we are running the application locally
 group :development do
