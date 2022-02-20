@@ -11,6 +11,10 @@ class SpotifyController
     RSpotify::Track.search(track_name, limit: limit, market: "US")
   end
 
+  def self.get_albums_for_artist(artist_name, limit: 10)
+    RSpotify::Artist.search(artist_name, limit: limit, market: "US")
+  end
+
   private
 
   def build_artist_hash_for_db
