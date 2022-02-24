@@ -12,6 +12,10 @@ class ApplicationController < Sinatra::Base
   end
   # ----------------------------------
 
+  get "/user_name/:id" do
+    SpotifyController.get_username(params[:id])
+  end
+
   get "/artist/:name" do
     content_type "application/json"
     matches = SpotifyController.get_artist_matches(params[:name])

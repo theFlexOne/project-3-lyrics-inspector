@@ -3,6 +3,10 @@ require "rspotify"
 class SpotifyController
   include RSpotify
 
+  def self.get_username(id)
+    RSpotify::User.find(id).display_name
+  end
+
   def self.get_artist_matches(artist_name, limit: 5)
     RSpotify::Artist.search(artist_name, limit: limit, market: "US")
   end
