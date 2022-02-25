@@ -11,7 +11,7 @@ end
 # preloading genres...
 top_50_genres = RSpotify::Category.list(country: "US", limit: 50).map { |g| { name: g.name, spotify_id: g.id } } # <- max is 50
 top_50_genres.each do |genre|
-  Genre.find_or_create_by(name: genre[:name], spotify_id: genre[:id])
+  Genre.find_or_create_by(name: genre[:name], spotify_id: genre[:spotify_id])
 end
 
 Playlist.all.each do |playlist|
@@ -28,7 +28,7 @@ Playlist.all.each do |playlist|
       ArtistGenre.find_or_create_by(genre_id: genre.id, artist_id: artist.id)
     end
 
-    new_track = playlist.tracks.find_or_create_by(name: track.name, spotify_id: track.id, duration_s: (track.duration_ms / 1000), album_id: album.id)
+    new_track = Track.find_or_create_by(name: track.name, spotify_id: track.id, duration_s: (track.duration_ms / 1000), album_id: album.id)
     PlaylistTrack.create(playlist_id: playlist.id, track_id: new_track.id)
   end
 end
