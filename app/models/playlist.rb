@@ -1,5 +1,4 @@
 class Playlist < ActiveRecord::Base
-  has_many :tracks
-  has_many :albums, through: :tracks
-  has_many :genres, through: :tracks
+  has_many :playlist_tracks
+  has_many :tracks, through: :playlist_tracks
 end
