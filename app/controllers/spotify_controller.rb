@@ -3,7 +3,7 @@ require "rspotify"
 class SpotifyController
   include RSpotify
 
-  def get_user(s_id)
+  def self.get_user(s_id)
     user = User.find_by(spotify_id: s_id)
     if user
       return user
@@ -18,6 +18,14 @@ class SpotifyController
 
   def self.get_username(id)
     RSpotify::User.find(id).display_name
+  end
+
+  def self.user_playlists(id)
+    self.find_spotify_user(id).playlists
+  end
+
+  def self.find_spotify_user(id)
+    RSpotify::User.find(id)
   end
 
   def self.get_artist_matches(artist_name, limit: 5)

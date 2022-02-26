@@ -1,7 +1,10 @@
 require_relative "spotify_controller.rb"
+require_relative "../helpers/spotify_auth.rb"
 require "sinatra/cross_origin"
 
 class ApplicationController < Sinatra::Base
+  include SpotifyAuth
+
   # I don't know what this is doing...
   set :bind, "0.0.0.0"
   configure do

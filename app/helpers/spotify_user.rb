@@ -1,4 +1,4 @@
-DEFAULT_USER_ID = "3174uilmw5y5bls52mcyadu6mpwe"
+DEFAULT_USER_ID = ENV["MY_SPOTIFY_USER_ID"]
 
 class SpotifyUser
   attr_reader :user
