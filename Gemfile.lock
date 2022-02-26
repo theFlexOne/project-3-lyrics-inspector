@@ -29,6 +29,7 @@ GEM
       oauth (~> 0.5.1)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
     faker (2.18.0)
       i18n (>= 1.6, < 2)
     faraday (2.2.0)
@@ -137,6 +138,7 @@ DEPENDENCIES
   activerecord (~> 6.1)
   database_cleaner
   discogs-wrapper
+  dotenv (~> 2.7, >= 2.7.6)
   faker (~> 2.18)
   httparty
   prettyprint

@@ -20,6 +20,7 @@ group :development do
   gem "faker", "~> 2.18"
   gem "rerun"
   gem "pry"
+  gem 'dotenv', '~> 2.7', '>= 2.7.6'
 end
 
 # These gems will only be used when we are running tests
