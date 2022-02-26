@@ -1,20 +1,31 @@
+require_relative "../config/environment.rb"
+
 puts "Seeding..."
 
+# Seed myself(user)
+puts "Seeding myself"
+params = User.build_user_params(ENV["MY_SPOTIFY_USER_ID"])
+user = User.create(**params)
+
 # fetching my Spotify playlists
-playlists = RSpotify::User.find("3174uilmw5y5bls52mcyadu6mpwe").playlists
+puts "Fetching my Spotify playlists"
+playlists = SpotifyController.user_playlists(ENV["MY_SPOTIFY_USER_ID"])
 
 # creating a new playlist in db for each spotify playlist
+puts "Seeding playlists"
 playlists.each do |playlist|
-  Playlist.create(name: playlist.name, spotify_id: playlist.id)
+  Playlist.create(name: playlist.name, spotify_id: playlist.id, user_id: user.id)
 end
 
 # preloading genres...
+puts "Preloading top 50 genres..."
 top_50_genres = RSpotify::Category.list(country: "US", limit: 50).map { |g| { name: g.name, spotify_id: g.id } } # <- max is 50
 top_50_genres.each do |genre|
   Genre.find_or_create_by(name: genre[:name], spotify_id: genre[:spotify_id])
 end
 
 Playlist.all.each do |playlist|
+  puts "Seeding artists, albums, and tracks"
   RSpotify::Playlist.find("3174uilmw5y5bls52mcyadu6mpwe", playlist.spotify_id).tracks.map do |track|
     s_artist = track.artists.first
     s_album = track.album
