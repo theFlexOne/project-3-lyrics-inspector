@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :artists, through: :albums
   has_many :genres, through: :artists
 
-  def self.build_user_params(id = ENV["MY_SPOTIFY_USER_ID"])
+  def self.build_model_params(id = nil)
     user = RSpotify::User.find(id)
     {
       username: user.display_name,
