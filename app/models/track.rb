@@ -7,4 +7,13 @@ class Track < ActiveRecord::Base
   def genres
     self.artist.genres
   end
+
+  def duration
+    minutes = (self.duration_s / 60).to_s
+    seconds = (self.duration_s % 60).to_s
+    if seconds.length === 1
+      seconds = "0" + seconds
+    end
+    "#{minutes}:#{seconds}"
+  end
 end
