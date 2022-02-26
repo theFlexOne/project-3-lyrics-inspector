@@ -3,6 +3,19 @@ require "rspotify"
 class SpotifyController
   include RSpotify
 
+  def get_user(s_id)
+    user = User.find_by(spotify_id: s_id)
+    if user
+      return user
+    else
+      spotify_user = RSpotify::User.find(s_id)
+      id = spotify_user.id
+      display_name = spotify_user.display_name
+      user_url = spotify_user.external_urls["spotify"]
+      User.create(spotify_id: id, display_name: display_name, spotify_url: user_url)
+    end
+  end
+
   def self.get_username(id)
     RSpotify::User.find(id).display_name
   end
