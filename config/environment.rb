@@ -2,15 +2,12 @@
 # if our application is running locally in development, in a test environment, or in production
 ENV["RACK_ENV"] ||= "development"
 
+# Require in .env
+require "dotenv/load"
+
 # Require in Gems
 require "bundler/setup"
 Bundler.require(:default, ENV["RACK_ENV"])
 
 # Require in all files in 'app' directory
 require_all "app"
-
-# Authenticate SpotifyController
-keys = YAML.load_file("keys.yml")
-id = keys[:spotify_client_id]
-secret = keys[:spotify_client_secret]
-RSpotify::authenticate(id, secret)
