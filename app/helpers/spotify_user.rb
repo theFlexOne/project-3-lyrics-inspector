@@ -3,8 +3,13 @@ DEFAULT_USER_ID = ENV["MY_SPOTIFY_USER_ID"]
 class SpotifyUser
   attr_reader :user
 
-  def initialize(id = DEFAULT_USER_ID)
-    @user = User.new(id)
+  def initialize(id:)
+    params = User.build_model_params(id)
+    @user = User.find_by(spotify_id: id) || User.new(params)
+  end
+
+  def save_user
+    self.user.save
   end
 
   def username
